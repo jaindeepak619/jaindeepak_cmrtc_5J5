@@ -90,7 +90,18 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void addLast(Student student) {
 		// Add your implementation here
-		
+		int i;
+		if(student==null){
+
+			throw new IllegalArgumentException("invalid");
+		}else{
+
+			for(i=0;i<this.students.length;i++){
+
+				continue;
+			}
+			this.students[i-1]=student;
+		}
 		
 	}
 
@@ -98,7 +109,26 @@ public class StudentGroup implements StudentArrayOperation {
 	public void add(Student student, int index) {
 		// Add your implementation here
 		
-		
+		if(student==null || (index <0 || index > this.students.length)){
+
+			throw new IllegalArgumentException("invalid");
+		}else{
+
+			Student[] temp=new Student[this.students.length];
+			for(int i=0;i<index;i++){
+
+				temp[i]=this.students[i];
+			}
+			temp[index]=student;
+			for(int i=index+1;i<this.students.length;i++){
+
+				temp[i]=this.students[i-1];
+			}
+			for(int i=0;i<temp.length;i++){
+
+				this.students[i]=temp[i];
+			}
+		}
 
 
 	}
