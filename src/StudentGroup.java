@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -145,16 +143,33 @@ public class StudentGroup implements StudentArrayOperation {
 	public void remove(int index) {
 		// Add your implementation here
 
-		if(index<0 || index>this.students.length){
+		int i;
+		try {
+			for (Student student : this.students) {
 
-			throw new IllegalArgumentException();
-		}
-		else{
+				System.out.println(student.getFullName());
+			}
+		} catch (NullPointerException e) {
 
-			ArrayList<Student> arrayList = new ArrayList<Student>(Arrays.asList(this.students));
-			arrayList.remove(index);
-			this.students= arrayList.toArray(students);
+			System.out.println(e.toString());
+		} finally {
 
+
+			if (index < 0 || index > this.students.length) {
+
+				throw new IllegalArgumentException();
+			} else {
+
+				for (i = 0; i < index; i++) {
+
+					continue;
+				}
+				this.students[i] = null;
+				for(int j=i;i<this.students.length;j++) {
+
+					this.students[j]=this.students[i];
+				}
+			}
 		}
 	}
 
@@ -191,7 +206,24 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
-		return null;
+		if(date==null){
+
+			throw new IllegalArgumentException();
+		}
+		else {
+
+			Student[] temp=new Student[this.students.length];
+			int i=0;
+			for(Student student:this.students){
+
+				if(student.getBirthDate().equals(date) || student.getBirthDate().before(date)){
+					
+					temp[i]=student;
+					i++;
+				}
+			}
+			return temp;
+		}
 	}
 
 	@Override
