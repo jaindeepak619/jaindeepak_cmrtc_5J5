@@ -161,7 +161,8 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
-	if (date == null) {
+	
+		if (date == null) {
 
 			throw new IllegalArgumentException();
 		} else {
@@ -175,7 +176,7 @@ public class StudentGroup implements StudentArrayOperation {
 					}
 				}
 			} catch (NullPointerException e) {
-			} finally {
+
 				Student[] temp = new Student[len];
 				try {
 					int i = 0;
@@ -189,14 +190,14 @@ public class StudentGroup implements StudentArrayOperation {
 						}
 					}
 
-				} catch (NullPointerException e) {
-
-				} finally {
+				} catch (NullPointerException ef) {
 
 					return temp;
+
 				}
 			}
 		}
+		return null;
 	}
 
 	@Override
