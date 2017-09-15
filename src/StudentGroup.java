@@ -161,29 +161,29 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
-		if(date==null){
+		if (date == null) {
 
 			throw new IllegalArgumentException();
-		}
-		else {
-				
-			try{
-			Student[] temp=new Student[this.students.length];
-			int i=0;
-			for(Student student:this.students){
+		} else {
+			Student[] temp = new Student[this.students.length];
 
-				if(student.getBirthDate().equals(date) || student.getBirthDate().before(date)){
-					
-					temp[i]=student;
-					i++;
+			try {
+				int i = 0;
+				for (Student student : this.students) {
+
+					if (student.getBirthDate().equals(date) || student.getBirthDate().before(date)) {
+
+						temp[i] = student;
+						i++;
+					}
 				}
-			}
-			}catch (NullPointerException e) {
+			} catch (NullPointerException e) {
 
-			System.out.println(e.toString());
-		} finally {
-				
-			return temp;
+				System.out.println(e.toString());
+			} finally {
+
+				return temp;
+			}
 		}
 	}
 
