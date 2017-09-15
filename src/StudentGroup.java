@@ -84,13 +84,7 @@ public class StudentGroup implements StudentArrayOperation {
 		// Add your implementation here
 		
 		
-		if(student==null){
-
-			throw new IllegalArgumentException("invalid");
-		}else{
-			
-			this.students[0]=student;
-		}
+	
 	}
 
 	@Override
