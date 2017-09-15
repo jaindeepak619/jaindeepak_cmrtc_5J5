@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -82,14 +84,20 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void addFirst(Student student) {
 		// Add your implementation here
-		
-		
-	
+
+		if(student==null){
+
+			throw new IllegalArgumentException("invalid");
+		}else{
+
+			this.students[0]=student;
+		}
 	}
 
 	@Override
 	public void addLast(Student student) {
 		// Add your implementation here
+
 		int i;
 		if(student==null){
 
@@ -101,14 +109,15 @@ public class StudentGroup implements StudentArrayOperation {
 				continue;
 			}
 			this.students[i-1]=student;
+			System.out.println(this.students[i-1].getFullName());
+
 		}
-		
+
 	}
 
 	@Override
 	public void add(Student student, int index) {
 		// Add your implementation here
-		
 		if(student==null || (index <0 || index > this.students.length)){
 
 			throw new IllegalArgumentException("invalid");
@@ -130,12 +139,23 @@ public class StudentGroup implements StudentArrayOperation {
 			}
 		}
 
-
 	}
 
 	@Override
 	public void remove(int index) {
 		// Add your implementation here
+
+		if(index<0 || index>this.students.length){
+
+			throw new IllegalArgumentException();
+		}
+		else{
+
+			ArrayList<Student> arrayList = new ArrayList<Student>(Arrays.asList(this.students));
+			arrayList.remove(index);
+			this.students= arrayList.toArray(students);
+
+		}
 	}
 
 	@Override
