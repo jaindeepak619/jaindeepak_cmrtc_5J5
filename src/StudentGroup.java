@@ -165,33 +165,36 @@ public class StudentGroup implements StudentArrayOperation {
 
 			throw new IllegalArgumentException();
 		} else {
-			int len=0;
-			for (Student student : this.students) {
-
-				if (student.getBirthDate().equals(date) || student.getBirthDate().before(date)) {
-
-					len++;
-				}
-			}
-			Student[] temp=new Student[len];
+			int len = 0;
 			try {
-				int i = 0;
-				
 				for (Student student : this.students) {
 
 					if (student.getBirthDate().equals(date) || student.getBirthDate().before(date)) {
 
-						temp[i]=student;
-						i++;
+						len++;
 					}
 				}
-				
 			} catch (NullPointerException e) {
-
-				System.out.println(e.toString());
 			} finally {
+				Student[] temp = new Student[len];
+				try {
+					int i = 0;
 
-				return temp;
+					for (Student student : this.students) {
+
+						if (student.getBirthDate().equals(date) || student.getBirthDate().before(date)) {
+
+							temp[i] = student;
+							i++;
+						}
+					}
+
+				} catch (NullPointerException e) {
+
+				} finally {
+
+					return temp;
+				}
 			}
 		}
 	}
