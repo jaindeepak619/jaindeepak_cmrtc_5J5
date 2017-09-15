@@ -55,24 +55,24 @@ public class StudentGroup implements StudentArrayOperation {
 
 			return null;
 		}
-		return this.students[index];
+		return students[index];
 	}
 
 	@Override
 	public void setStudent(Student student, int index) {
 		// Add your implementation here
 		
-		if(student==null || (index <0 || index > this.students.length)){
+		if(student==null || (index <0 || index > students.length)){
 
 			throw new IllegalArgumentException("invalid");
 		}
 		else{
 
-			for(int i=0;i<this.students.length;i++){
+			for(int i=0;i<students.length;i++){
 
 				if( index ==i){
 
-					this.students[i]=student;
+					students[i]=student;
 				}
 			}
 
@@ -88,7 +88,7 @@ public class StudentGroup implements StudentArrayOperation {
 			throw new IllegalArgumentException("invalid");
 		}else{
 
-			this.students[0]=student;
+			students[0]=student;
 		}
 	}
 
@@ -102,12 +102,11 @@ public class StudentGroup implements StudentArrayOperation {
 			throw new IllegalArgumentException("invalid");
 		}else{
 
-			for(i=0;i<this.students.length;i++){
+			for(i=0;i<students.length;i++){
 
 				continue;
 			}
-			this.students[i-1]=student;
-			System.out.println(this.students[i-1].getFullName());
+			students[i-1]=student;
 
 		}
 
@@ -116,61 +115,17 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void add(Student student, int index) {
 		// Add your implementation here
-		if(student==null || (index <0 || index > this.students.length)){
+		if(student==null || (index <0 || index > students.length)){
 
 			throw new IllegalArgumentException("invalid");
-		}else{
-
-			Student[] temp=new Student[this.students.length];
-			for(int i=0;i<index;i++){
-
-				temp[i]=this.students[i];
-			}
-			temp[index]=student;
-			for(int i=index+1;i<this.students.length;i++){
-
-				temp[i]=this.students[i-1];
-			}
-			for(int i=0;i<temp.length;i++){
-
-				this.students[i]=temp[i];
-			}
 		}
-
 	}
 
 	@Override
 	public void remove(int index) {
 		// Add your implementation here
 
-		int i;
-		try {
-			for (Student student : this.students) {
 
-				System.out.println(student.getFullName());
-			}
-		} catch (NullPointerException e) {
-
-			System.out.println(e.toString());
-		} finally {
-
-
-			if (index < 0 || index > this.students.length) {
-
-				throw new IllegalArgumentException();
-			} else {
-
-				for (i = 0; i < index; i++) {
-
-					continue;
-				}
-				this.students[i] = null;
-				for(int j=i;i<this.students.length;j++) {
-
-					this.students[j]=this.students[i];
-				}
-			}
-		}
 	}
 
 	@Override
