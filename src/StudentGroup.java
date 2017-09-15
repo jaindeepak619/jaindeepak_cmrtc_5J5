@@ -179,7 +179,6 @@ public class StudentGroup implements StudentArrayOperation {
 				}
 			} catch (NullPointerException e) {
 
-				System.out.println(e.toString());
 			} finally {
 
 				return temp;
