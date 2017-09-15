@@ -166,7 +166,8 @@ public class StudentGroup implements StudentArrayOperation {
 			throw new IllegalArgumentException();
 		}
 		else {
-
+				
+			try{
 			Student[] temp=new Student[this.students.length];
 			int i=0;
 			for(Student student:this.students){
@@ -177,6 +178,11 @@ public class StudentGroup implements StudentArrayOperation {
 					i++;
 				}
 			}
+			}catch (NullPointerException e) {
+
+			System.out.println(e.toString());
+		} finally {
+				
 			return temp;
 		}
 	}
